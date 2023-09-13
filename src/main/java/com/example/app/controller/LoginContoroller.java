@@ -14,7 +14,7 @@ import jakarta.validation.Valid;
 
 @Controller
 //@RequiredArgsConstructor
-public class AdminLogin {
+public class LoginContoroller {
 
 	private final AdminService service = null;
 
@@ -39,13 +39,13 @@ public class AdminLogin {
 			HttpSession session) throws Exception {
 		// 入力に不備がある
 		if (errors.hasErrors()) {
-			return "/";
+			return "login";
 		}
 		// パスワードが正しくない
 		if (!service.isCorrectIdAndPassword(admin.getLoginId(),
 				admin.getLoginPass())) {
 			errors.rejectValue("loginId", "error.incorrect_id_password");
-			return "/";
+			return "login";
 		}
 		// 正しいログインID とパスワード
 		// ⇒ セッションにログインID を格納し、リダイレクト
@@ -55,9 +55,9 @@ public class AdminLogin {
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		// セッションを破棄し、トップページへ遷移
+		// セッションを破棄
 		session.invalidate();
-		return "redirect:/";
+		return "logout";
 	}
 
 }
