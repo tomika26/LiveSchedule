@@ -13,9 +13,11 @@ import com.example.app.domain.Live;
 import com.example.app.service.LiveService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @Controller
-public class ManagerResult {
+@RequiredArgsConstructor
+public class LiveController {
 
 	private static final int NUM_PER_PAGE = 10;
 
@@ -38,7 +40,7 @@ public class ManagerResult {
 
 	@GetMapping
 	public String addGet(Model model) throws Exception {
-		model.addAttribute("title", "会員の追加");
+		model.addAttribute("title", "の追加");
 		model.addAttribute("schedule", new Live());
 		model.addAttribute("types", service.getTypeList());
 		return "/";
@@ -52,7 +54,7 @@ public class ManagerResult {
 			Model model) throws Exception {
 		if (errors.hasErrors()) {
 			model.addAttribute("title", "会員の追加");
-			//model.addAttribute("types", service.getTypeList());
+			model.addAttribute("types", service.getTypeList());
 			return "members/save";
 
 		}
