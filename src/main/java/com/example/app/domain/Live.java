@@ -12,5 +12,5 @@ public class Live {
 	private LocalDate date;
 	private String place;
 	private String iventName;
-	private Artist artist;
+	private Artist artistId;
 }

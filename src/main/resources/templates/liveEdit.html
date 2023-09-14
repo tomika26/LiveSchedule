@@ -12,16 +12,16 @@
 	<div>
 		<p>管理者</p>
 		<p>
-			<a th:href="">ログアウト</a>
+			<a th:href="@{/logout}">ログアウト</a>
 		</p>
 	</div>
 
 	<div>
 		<form action="" method="post">
 			<p>
-				<a th:href="">ライブ日程一覧</a>
+				<a th:href="@{/live}">ライブ日程一覧</a>
 			</p>
-			<p>閲覧者の登録</p>
+			<p><a th:href="@{/member}">閲覧者の登録</a></p>
 			<p>
 				日付 <input type="date" name="date">
 			</p>
@@ -31,7 +31,7 @@
 			</p>
 
 			<p>
-				主催者 <input type="text" name="organizer" id="">
+				イベント名 <input type="text" name="ivent_name" id="">
 			</p>
 
 			<p>
