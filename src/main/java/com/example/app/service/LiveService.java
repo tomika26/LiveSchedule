@@ -1,25 +1,18 @@
 package com.example.app.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 import com.example.app.domain.Live;
+import com.example.app.domain.Member;
 
-import jakarta.validation.Valid;
-
-@Service
 public interface LiveService {
 
-	Object getScheduleListByPage(Integer page, int numPerPage);
+	List<Live> getschedulesList();
 
-	Object getTotalPages(int numPerPage);
+	void addMember(Member member) throws Exception;
 
-	Object getTypeList();
+	void editMember(Member member) throws Exception;
 
-	void editMember(@Valid Live live);
+	void deleteMember(Integer id) throws Exception;
 
-	void deleteMember(Integer id);
-
-	
-
-	
 }
