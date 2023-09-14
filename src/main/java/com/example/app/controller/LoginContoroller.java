@@ -4,60 +4,37 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.app.domain.Manager;
-import com.example.app.service.AdminService;
+import com.example.app.domain.Member;
+import com.example.app.service.LoginService;
 
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @Controller
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
+@RequestMapping("login")
 public class LoginContoroller {
 
-	private final AdminService service = null;
+	private final LoginService service;
 
 	@GetMapping
 	public String login(Model model) {
-		model.addAttribute("admin", new Manager());
-		return "login";
+		model.addAttribute("member", new Member());
+		return "liveList";
 	}
 
-	//@GetMapping
-	//public String login() {
-	//	return "/login";
-	//}
-	//ーザーが入力したIDとパスワードの確認を行う。
-	//問題がなければ、管理者データをセッションに格納し、
-	//admin/resultへリダイレクトする
-
 	@PostMapping
-	public String login(
-			@Valid Manager admin,
+	public String login(@Valid @ModelAttribute("member") Member member,
 			Errors errors,
-			HttpSession session) throws Exception {
-		// 入力に不備がある
+			Model model) {
 		if (errors.hasErrors()) {
 			return "login";
 		}
-		// パスワードが正しくない
-		if (!service.isCorrectIdAndPassword(admin.getLoginId(),
-				admin.getLoginPass())) {
-			errors.rejectValue("loginId", "error.incorrect_id_password");
-			return "login";
-		}
-		// 正しいログインID とパスワード
-		// ⇒ セッションにログインID を格納し、リダイレクト
-		session.setAttribute("loginId", admin.getLoginId());
-		return "redirect:/";
-	}
-
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		// セッションを破棄
-		session.invalidate();
-		return "logout";
+		return "liveList";
 	}
 
 }
