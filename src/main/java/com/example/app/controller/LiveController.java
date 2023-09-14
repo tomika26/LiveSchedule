@@ -9,10 +9,16 @@ import com.example.app.domain.Live;
 @Controller
 public class LiveController {
 
-	@GetMapping
+	@GetMapping("/live")
 	public String list(Model model) {
 		model.addAttribute("schedule", new Live());
-		return "liveEdit";
+		return "liveList";
+	}
+	
+	@GetMapping
+	public String edit(Model model) {
+		model.addAttribute("schedule",new Live());
+		return "/edit";
 	}
 
 }

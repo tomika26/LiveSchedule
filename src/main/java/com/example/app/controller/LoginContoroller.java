@@ -6,7 +6,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.app.domain.Member;
 import com.example.app.service.LoginService;
@@ -16,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("login")
+
 public class LoginContoroller {
 
 	private final LoginService service;
@@ -24,7 +23,7 @@ public class LoginContoroller {
 	@GetMapping
 	public String login(Model model) {
 		model.addAttribute("member", new Member());
-		return "liveList";
+		return "login";
 	}
 
 	@PostMapping
@@ -34,7 +33,7 @@ public class LoginContoroller {
 		if (errors.hasErrors()) {
 			return "login";
 		}
-		return "liveList";
+		return "redirect:/live";
 	}
 
 }
