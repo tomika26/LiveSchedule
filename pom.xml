@@ -67,6 +67,13 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
+		<!-- 別途追加：BCrypt -->
+		<dependency>
+			<groupId>de.svenkubiak</groupId>
+			<artifactId>jBCrypt</artifactId>
+			<version>0.4.3</version>
+		</dependency>
+
 
 	</dependencies>
 
