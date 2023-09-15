@@ -11,5 +11,6 @@ public interface MemberMapper {
 
 	Member selectByLoginId(String loginId);
 	List<Member> selectAll();
+	//void insert(Member member);
 
 }
