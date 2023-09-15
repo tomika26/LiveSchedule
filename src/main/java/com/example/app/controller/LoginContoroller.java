@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.app.domain.Member;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -32,12 +33,19 @@ public class LoginContoroller {
 		if (errors.hasErrors()) {
 			return "login";
 		}
+		
+		//if(!){
+		//	errors.rejectValue("loginId","loginPassword");
+		//	return "login";
+		//}
 		return "redirect:/live";
 	}
 	
-	@PostMapping
-	public String logout(Model model) {
-		return "logout";
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		// セッションを破棄し、トップページへ遷移
+		session.invalidate();
+		return "redirect:/";
 	}
 
 }
