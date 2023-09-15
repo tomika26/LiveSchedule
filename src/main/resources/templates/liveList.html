@@ -28,24 +28,24 @@
 
 				<table class="table" border="1">
 					<tr>
-
+						<th>NO.</th>
 						<th>日程</th>
 						<th>開催場所</th>
-						<th>開催名</th>
+						<th>イベント名</th>
 						<th>目当てのアーティスト</th>
 						<th>感想</th>
 
 					</tr>
 					<tr th:each="schedule : ${schedules}">
-
-						<td>[[${#temporals.format(schedule.date, 'yyyy月MM日dd')}]]</td>
-						<td>あいｙ</td>
+						<td>[[${schedule.id}]]</td>
+						<td>[[${#temporals.format(schedule.date, 'yyyy年MM月dd日')}]]</td>
 						<td>[[${schedule.place}]]</td>
-						<td>[[${schedule.iventName}]]</td>
-						<td>[[${schedulrartistId}]]</td>
+						<td>[[${schedule.eventName}]]</td>
+						<td>[[${schedule.name}]]</td>
+						<td></td>
 
-						<td><a th:href="@{/liveEdit}">編集</a></td>
-						<td><a th:href="@{/}">削除</a></td>
+						<td><a th:href="@{/live/edit}">編集</a></td>
+						<td><a th:href="@{/live/edit}">削除</a></td>
 					</tr>
 				</table>
 			</form>

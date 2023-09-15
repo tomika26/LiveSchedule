@@ -1,52 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.app.mapper.LiveMapper">
+<mapper namespace="com.example.app.mapper.ScheduleMapper">
 
-	<select id="selectAll">
+	<select id="selectAll" resultType="Live">
 		SELECT
 		schedules.id,
-		schedules.created,schedules.place,
-		schedules.artist,
-		artists.name AS artistName
+		schedules.date,
+		schedules.place,
+		schedules.event_name,
+		schedules.artist_id,
+		artists.name
 		FROM schedules
 		JOIN artists
-		ON
-		artists.name = schedules.artist
-
+		ON schedules.artist_id = artists.id
 	</select>
 
-	<select id="selectById">
-		SELECT
-		schedules.id,
-		schedules.created,schedules.place,
-		schedules.artist,
-		artists.name AS artistName
+	<select id="selectById" resultType="Live" parameterType="int">
+		SELECT *
 		FROM schedules
-		JOIN artists
-		ON artists.name =
-		schedules.artist
-		LIMIT #{offset}, #{limit}
-
+		WHERE id = #{Id}
 	</select>
 
-	<insert id="insert" parameterType="Member">
+	<insert id="insert" parameterType="Live">
+
 		INSERT INTO schedules
-		(name,age,address,type_id,created)
-		VALUES (#{name}, #{age}, #{address},
-		#{typeId}, NOW())
+		(date,place,event_name,artist_id)
+		VALUES
+		(#{date},#{place},#{eventName},#{artistId})
+
 	</insert>
 
-	<update id="update" parameterType="Member">
+	<update id="update" parameterType="Live">
 		UPDATE schedules
-		SET name = #{name}, age = #{age},
-		address = #{address}, type_id = #{typeId}
+		SET date =#{date}, place = #{place},
+		event_name = #{eventName}, artist_id =
+		#{artistId}
 		WHERE
 		id = #{id}
 	</update>
 
 	<delete id="delete" parameterType="int">
-		DELETE FROM schedules 
+		DELETE FROM schedules
 		WHERE id = #{id}
 	</delete>
 

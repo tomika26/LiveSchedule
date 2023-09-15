@@ -17,35 +17,37 @@
 	</div>
 
 	<div>
-		<form action="" method="post">
+		<form action="" method="post" th:object="${live}">
 			<p>
 				<a th:href="@{/live}">ライブ日程一覧</a>
 			</p>
-			<p><a th:href="@{/member}">閲覧者の登録</a></p>
 			<p>
-				日付 <input type="date" name="date">
+				<a th:href="@{/member}">閲覧者の登録</a>
+			</p>
+			
+			<p>
+				日付 <input type="date"  th:field="*{date}">
 			</p>
 
 			<p>
-				開催場場所 <input type="text" name="place" id="">
+				開催場場所 <input type="text"  th:field="*{place}" >
 			</p>
 
 			<p>
-				イベント名 <input type="text" name="ivent_name" id="">
+				イベント名 <input type="text"  th:field="*{eventName}" >
 			</p>
-
-			<p>
-				目当てのアーティスト <input type="checkbox" name="artist" value="1">KZUIRA
-				<input type="checkbox" name="artist" value="2">WANIMA <input
-					type="checkbox" name="artist" value="3">SHADOWS <input
-					type="checkbox" name="artist" value="4">THE BONEZ <input
-					type="checkbox" name="artist" value="5">RADWIMPS その他<input
-					type="text" name="otherArtist">
+			
+						<p>
+				目当てのアーティスト 
+				<input type="radio"  th:field="*{artistId}" value="1">KUZIRA
+				<input type="radio" th:field="*{artistId}" value="2">WANIMA <input
+					type="radio" th:field="*{artistId}"value="3"> THE BONEZ<input
+					type="radio" th:field="*{artistId}" value="4">SHADOWS <input
+					type="radio" th:field="*{artistId}" value="5" />RADWIMPS
+					
 			</p>
-			<p>
-				感想 <input type="textarea" name="report">
-			</p>
-			<input type="submit" name="" id="" value="更新">
+			
+			<input type="submit" value="更新">
 
 
 		</form>
