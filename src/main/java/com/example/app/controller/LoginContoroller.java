@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.app.domain.Member;
-import com.example.app.service.LoginService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 public class LoginContoroller {
 
-	private final LoginService service;
+
 
 	@GetMapping
 	public String login(Model model) {
@@ -34,6 +33,11 @@ public class LoginContoroller {
 			return "login";
 		}
 		return "redirect:/live";
+	}
+	
+	@PostMapping
+	public String logout(Model model) {
+		return "logout";
 	}
 
 }
