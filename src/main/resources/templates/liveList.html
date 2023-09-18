@@ -44,8 +44,8 @@
 						<td>[[${schedule.name}]]</td>
 						<td></td>
 
-						<td><a th:href="@{/live/edit}">編集</a></td>
-						<td><a th:href="@{/live/edit}">削除</a></td>
+						<td><a th:href="@{/live/edit/{id}(id=${schedule.id})}">編集</a></td>
+						<td><a th:href="@{/live/edit/{id}(id=${schedule.id})}">削除</a></td>
 					</tr>
 				</table>
 			</form>

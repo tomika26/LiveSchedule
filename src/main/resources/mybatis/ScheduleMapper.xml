@@ -33,9 +33,11 @@
 
 	<update id="update" parameterType="Live">
 		UPDATE schedules
-		SET date =#{date}, place = #{place},
-		event_name = #{eventName}, artist_id =
-		#{artistId}
+		SET 
+		 date =#{date},
+		 place = #{place},
+		 event_name = #{eventName},
+		  artist_id =#{artistId}
 		WHERE
 		id = #{id}
 	</update>
