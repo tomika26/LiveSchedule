@@ -18,14 +18,14 @@
 		</div>
 
 		<div>
-			<form action="" method="post" th:object="${schedules}">
+			
 				<p>
 					<a th:href="@{/live/edit}">鑑賞予定のライブ日程の登録</a>
 				</p>
 				<p>
 					<a th:href="@{/member}">閲覧者の登録</a>
 				</p>
-
+<form action="@{/live/edit}" method="post" th:object="${schedules}">
 				<table class="table" border="1">
 					<tr>
 						<th>NO.</th>
@@ -45,7 +45,7 @@
 						<td></td>
 
 						<td><a th:href="@{/live/edit/{id}(id=${schedule.id})}">編集</a></td>
-						<td><a th:href="@{/live/edit/{id}(id=${schedule.id})}">削除</a></td>
+						<td><a th:href="@{/live/edit/{id}(id=${schedule.id})/delete}">削除</a></td>
 					</tr>
 				</table>
 			</form>
