@@ -10,6 +10,7 @@
 		schedules.place,
 		schedules.event_name,
 		schedules.artist_id,
+		schedules.impression,
 		artists.name
 		FROM schedules
 		JOIN artists
@@ -25,26 +26,28 @@
 	<insert id="insert" parameterType="Live">
 
 		INSERT INTO schedules
-		(date,place,event_name,artist_id)
+		(date,place,event_name,artist_id,impression)
 		VALUES
-		(#{date},#{place},#{eventName},#{artistId})
+		(#{date},#{place},#{eventName},#{artistId},#{impression})
 
 	</insert>
 
 	<update id="update" parameterType="Live">
 		UPDATE schedules
-		SET 
-		 date =#{date},
-		 place = #{place},
-		 event_name = #{eventName},
-		  artist_id =#{artistId}
+		SET
+		date =#{date},
+		place = #{place},
+		event_name = #{eventName},
+		artist_id =#{artistId},
+		impression=#{impression}
 		WHERE
 		id = #{id}
 	</update>
 
 	<delete id="delete" parameterType="int">
 		DELETE FROM schedules
-		WHERE id = #{id}
+		WHERE id
+		= #{id}
 	</delete>
 
 

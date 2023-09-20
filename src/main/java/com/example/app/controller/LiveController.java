@@ -2,6 +2,7 @@ package com.example.app.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import com.example.app.domain.Live;
 import com.example.app.mapper.ScheduleMapper;
 import com.example.app.service.LiveService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -34,9 +36,12 @@ public class LiveController {
 	}
 
 	@PostMapping("/live/edit")
-	public String editPost(
-			@ModelAttribute("live") Live live,
-			Model model) {
+	public String editPost(@Valid @ModelAttribute("live") Live live,
+			Errors errors) {
+		if (errors.hasErrors()) {
+			
+			return "liveEdit";
+		}
 		mapper.insert(live);
 		return "redirect:/live";
 	}
@@ -59,31 +64,29 @@ public class LiveController {
 	@PostMapping("/live/edit/{id}")
 	public String updatePost(
 			@PathVariable("id") Integer id,
-			@ModelAttribute("live") Live live
-			) {
-		
-		Live existingLive = service.getLiveById(id);
-		
-		System.out.println(existingLive);
-		
-		existingLive.setDate(live.getDate());
-		existingLive.setPlace(live.getPlace());
-		existingLive.setEventName(live.getEventName());
-		existingLive.setArtistId(live.getArtistId());
+			@Valid @ModelAttribute("live") Live live,
+			Errors errors) {
+		if (errors.hasErrors()) {
+			return "liveEdit";
+		}
+
 		// データベースに更新を反映
-		service.updateLive(existingLive);
+		live.setId(id);
+		service.updateLive(live);
 
 		return "redirect:/live";
 	}
-	
-	@PostMapping("live/edit/{id}/delete")
+
+	@GetMapping("live/edit/{id}/delete")
 	public String delete(
 			@PathVariable("id") Integer id,
+			Model model,
 			RedirectAttributes rd) {
+		Live live = service.getLiveById(id);
+		System.out.println(live);
 		service.deleteLive(id);
-		rd.addFlashAttribute("statusMessage", "会員情報を削除しました");
+		rd.addFlashAttribute("statusMessage", "イベントを削除しました");
 		return "redirect:/live";
 	}
-	
-	
+
 }

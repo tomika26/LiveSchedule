@@ -12,24 +12,23 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class LiveServiceImpl implements LiveService {
-private final ScheduleMapper mapper;
+	private final ScheduleMapper mapper;
+
 	@Override
 	public List<Live> getAllLives() {
-		
+
 		return mapper.selectAll();
 	}
 
 	@Override
 	public Live getLiveById(int id) {
-		
+
 		return mapper.selectById(id);
 	}
 
 	@Override
 	public void addLive(Live live) {
 		mapper.insert(live);
-		
-
 
 	}
 
@@ -41,6 +40,7 @@ private final ScheduleMapper mapper;
 
 	@Override
 	public void deleteLive(int id) {
+
 		mapper.delete(id);
 
 	}

@@ -32,25 +32,36 @@ public class LoginContoroller {
 	@PostMapping
 	public String login(@Valid @ModelAttribute("member") Member member,
 			Errors errors,
-			Model model) throws Exception {
+			Model model,
+			HttpSession session) throws Exception {
 		if (errors.hasErrors()) {
 			return "login";
 		}
 
-		if (!service.isCorrectIdAndPassword(member.getLoginId(), member.getLoginPass())) {
-
+		Member loginMember =
+		    service.isCorrectIdAndPassword(member.getLoginId(), member.getLoginPass());
+		
+		if (loginMember == null) {
+			errors.rejectValue("loginId", "error.incorrect_id_password","IDまたはパスワードが正しくありません");
 			return "login";
 		}
+		session.setAttribute("member", loginMember);
 		return "redirect:/live";
 	}
 
 	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		// セッションを破棄し、ログアウトへ遷移
-		session.invalidate();
+	public String showLogout(Model model) {
+		
+		
 		return "logout";
 	}
 	
-	
+	@GetMapping("/login")
+	public String logout(HttpSession session) {
+		
+		// セッションを破棄し、ログアウトへ遷移
+		session.invalidate();
+		return "redirect:/";
+	}
 
 }

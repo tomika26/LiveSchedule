@@ -1,5 +1,7 @@
 package com.example.app.service;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
@@ -16,17 +18,23 @@ public class LoginServiceImpl implements LoginService {
 	private final MemberMapper mapper;
 
 	@Override
-	public boolean isCorrectIdAndPassword(String loginId, String loginPass) throws Exception {
+	public Member isCorrectIdAndPassword(String loginId, String loginPass) throws Exception {
 		Member login = mapper.selectByLoginId(loginId);
 
 		if (login == null) {
-			return false;
+			return null;
 		}
 
 		if (!BCrypt.checkpw(loginPass, login.getLoginPass())) {
-			return false;
+			return null;
 		}
-		return true;
+		return login;
+	}
+
+	@Override
+	public List<Member> getAllMembers() {
+
+		return mapper.selectAll();
 	}
 
 }
