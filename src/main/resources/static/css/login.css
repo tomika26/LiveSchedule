@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+.login{
+	background-color: pink;
+}
 
 h1{
 	color:green;
