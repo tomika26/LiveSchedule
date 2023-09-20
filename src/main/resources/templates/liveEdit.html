@@ -7,23 +7,29 @@
 </head>
 
 <body>
-	<h1>鑑賞予定・鑑賞済みライブの日程登録</h1>
+	<header>
+		<h1>鑑賞予定・鑑賞済みライブの日程登録</h1>
 
-	<div>
-		<p>管理者</p>
-		<p>
-			<a th:href="@{/logout}">ログアウト</a>
-		</p>
-	</div>
+		<div>
+			<p th:text="${session.member.name}"></p>
 
-	<div>
+			<p>
+				<a th:href="@{/logout}">ログアウト</a>
+			</p>
+		</div>
+	</header>
 
-		<p>
+
+	<nav>
+	<ul>
+		<li>
 			<a th:href="@{/live}">ライブ日程一覧</a>
-		</p>
-		<p>
+		</li>
+		<li>
 			<a th:href="@{/member}">閲覧者の登録</a>
-		</p>
+		</li></ul>
+	</nav>
+	<main>
 		<form action="" method="post" th:object="${live}">
 
 
@@ -46,15 +52,23 @@
 				<input type="radio" th:field="*{artistId}" value="5" />RADWIMPS
 
 			</p>
+			<p th:errors="*{impression}"></p>
+			<p>
+				感想
+				<textarea id="" cols="50" rows="10" th:field="*{impression}">
+				ここに書く
+				</textarea>
+			</p>
 
-			<input type="hidden" th:field="*{name}" />
-<input type="submit"
-				value="更新">
+
+			<!--  <input type="hidden" th:field="*{name}" />-->
+			<input type="submit" value="更新">
 
 
 		</form>
 
-	</div>
+	</main>
+	<footer></footer>
 </body>
 
 </html>
