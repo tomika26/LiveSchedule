@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <title>ログイン</title>
-<link rel="stylesheet" th:href="@{/css/login.css}">
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
 	<header class="login">
-		<h1>ログイン画面</h1>
+		
 	</header>
 
 
@@ -16,6 +16,9 @@
 	<main class="login">
 		<div>
 			<form action="" method="post" th:object="${member}">
+			
+			<h1>ログイン画面</h1>
+		<p><small>ユーーザID、パスワードをご入力の上、「ログイン」ボタンをクリックしてください。</small></p>
 				<p th:errors="*{loginId}"></p>
 				<p>
 					ログインID: <input type="text" th:field="*{loginId}" autofocus="focus">
@@ -31,7 +34,10 @@
 
 		</div>
 	</main>
-	<footer>© 2023 TOMII All Rights Reserved. Powered by ??? Inc.</footer>
+	<footer>
+		<small> Copyright © 2023 Football History Archives. All Rights
+			Reserved. </small>
+	</footer>
 </body>
 
 </html>

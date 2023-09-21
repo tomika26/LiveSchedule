@@ -1,0 +1,172 @@
+@charset "utf-8";
+
+/* ボックスの視覚化 */
+* {
+	outline: 1px solid aqua;
+}
+
+/* 初期化 */
+ul {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+* {
+	box-sizing: border-box;
+	/* 各要素がもつデフォルトのマージンを初期化 */
+	margin: 0;
+}
+
+html {
+	font-size: 62.5%; /* 62.5% = 10px ⇒ 文字サイズが計算しやすくなる */
+	font-family: Roboto, 'Segoe UI', Arial, Meiryo, sans-serif;
+}
+
+html, body {
+	/* .wrap の高さが100%になるために必要 */
+	height: 100%;
+}
+
+body {
+	background-color: black;
+}
+
+.wrap {
+	background-color: black;
+	border-left: 2px solid #fff;
+	border-right: 2px solid #999;
+	max-width: 1200px;
+	min-width: 700px;
+	min-height: 100%;
+	padding: 0 30px;
+	/* 幅を決めて左右のマージンをauto にすると中央に配置できる */
+	margin: 0 auto;
+}
+
+h1 {
+	padding-top: 20px;
+	color: #2b616d;
+}
+
+header .container {
+	width: 100%;
+	margin: 0 70%;
+	justify-content: space-between;
+	align-items: baseline;
+	justify-content: space-between;
+	color: #2b616d;
+	font-size: 20px;
+}
+
+nav {
+	margin: 20px 0;
+	background-image: url(/image/live3.jpg);
+	background-position: center;
+}
+
+nav ul {
+	display: flex;
+	padding: 50px 20px;
+}
+
+nav ul li {
+	width: 250px;
+	height: 54px;
+	margin-right: 5px;
+	color: #b2dbd5;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 54px;
+	text-align: center;
+}
+
+nav a {
+	display: block;
+	height: 54px;
+	text-decoration: none;
+	color: #fff;
+	font-weight: normal;
+	text-align: center;
+}
+
+nav a:hover {
+	color: black;
+	font-weight: bold;
+}
+
+.flex-container {
+	display: flex;
+}
+
+main th {
+	text-align: center;
+	background-color: #b2dbd5;
+	margin-bottom: 5px;
+	padding: 5px 0;
+	font-weight: bold;
+	border-right: 1px solid #999;
+	color: #fff;
+	text-decoration: none;
+	font-size: 1em; /* 20px */
+}
+
+main tr {
+	border-top: dotted 1px #cccccc;
+	background-color: #f8f5f2;
+}
+
+form {
+	width: 100%;
+	padding: 40px 10px; 
+	background-color : #f47d4a;
+	text-align: center;
+
+	
+	/* 幅を決めて左右のマージンをauto にすると中央に配置できる */
+	margin: 0 auto;
+}
+
+form h1, form p {
+	color: black;
+	font-weight: 5000;
+  
+}
+
+form p {
+	font-size: 20px;
+}
+
+form input,textarea{
+	background:#00cffa;
+}
+
+.edit {
+	color: black;
+	background-color: white;
+}
+
+.edit p {
+	padding: 20px;
+}
+
+/* チェックボックスデザイン */
+input[type="radio"] {
+    cursor: pointer;
+    padding-left: 30px;/*label手前にチェックボックス用の余白を開ける*/
+    vertical-align: middle;
+    position: relative;
+     cursor: pointer;
+  }
+
+footer {
+	clear: both;
+	bottom: 0; /* ページの下端に配置します。 */
+	width: 100%; /* 幅をページの幅いっぱいに設定します。 */
+	color: #fff; /* フッターのテキストカラーを設定します。 */
+	padding: 10px 0; /* フッターの余白を追加します。 */
+	text-align: center; /* フッター内のテキストを中央揃えにします。 */
+}

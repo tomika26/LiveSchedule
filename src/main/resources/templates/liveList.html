@@ -3,64 +3,75 @@
 <head>
 <meta charset="UTF-8" />
 <title>一覧</title>
-<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 
 <body>
-	<header>
+	<div class="wrap">
+		<header>
 
-		<h1>ライブ日程一覧</h1>
+			<h1>ライブ日程一覧</h1>
 
-		<div>
+			<div class="container">
 
-			<p th:text="${session.member.name}+'さん、ようこそ'"></p>
-			<p>
-				<a th:href="@{/logout}">ログアウト</a>
-			</p>
-		</div>
-	</header>
-	<nav>
-		<ul>
-			<li><a th:href="@{/live/edit}">鑑賞予定のライブ日程の登録</a></li>
-			<li><a th:href="@{/member}">閲覧者の登録</a></li>
-		</ul>
-	</nav>
-	<main>
-		<form action="@{/live/edit}" method="post" th:object="${schedules}">
-			<table class="table" border="1">
-				<tr>
-					<th>NO.</th>
-					<th>日程</th>
-					<th>開催場所</th>
-					<th>イベント名</th>
-					<th>目当てのアーティスト</th>
-					<th>感想</th>
+				<p th:text="${session.member.name}+'さん、ようこそ'"></p>
+				<p>
+					<a th:href="@{/logout}">ログアウト</a>
+				</p>
+			</div>
+			<!-- /.container -->
+		</header>
+		<nav>
+			<ul>
+				<li><a th:href="@{/live/edit}">鑑賞予定のライブ日程の登録</a></li>
+				<li><a th:href="@{/member}">閲覧者の登録</a></li>
+			</ul>
+		</nav>
+		<main>
+			<div class="flex-container">
+				<form action="@{/live/edit}" method="post" th:object="${schedules}">
+					<table class="table" border="1">
 
-				</tr>
-				<tr th:each="schedule : ${schedules}">
-					<td>[[${schedule.id}]]</td>
-					<td>[[${#temporals.format(schedule.date, 'yyyy年MM月dd日')}]]</td>
-					<td>[[${schedule.place}]]</td>
-					<td>[[${schedule.eventName}]]</td>
-					<td>[[${schedule.name}]]</td>
-					<td>[[${schedule.impression}]]</td>
+						<tr>
+							<th>NO.</th>
+							<th>日程</th>
+							<th>開催場所</th>
+							<th>イベント名</th>
+							<th>目当てのアーティスト</th>
+							<th>感想</th>
 
-					<td><a th:href="@{/live/edit/{id}(id=${schedule.id})}">編集</a></td>
-					<td><a th:href="@{/live/edit/{id}/delete(id=${schedule.id})}">削除</a></td>
+						</tr>
 
-				</tr>
+						<tr id="live-information" th:each="schedule : ${schedules}">
+							<td>[[${schedule.id}]]</td>
+							<td>[[${#temporals.format(schedule.date, 'yyyy年MM月dd日')}]]</td>
+							<td>[[${schedule.place}]]</td>
+							<td>[[${schedule.eventName}]]</td>
+							<td>[[${schedule.name}]]</td>
+							<td>[[${schedule.impression}]]</td>
 
-			</table>
-			<p th:text="${statusMessage}"></p>
-		</form>
-	</main>
+							<td><a th:href="@{/live/edit/{id}(id=${schedule.id})}">編集</a></td>
+							<td><a
+								th:href="@{/live/edit/{id}/delete(id=${schedule.id})}">削除</a></td>
+
+						</tr>
+
+					</table>
+					<p th:text="${statusMessage}"></p>
+
+				</form>
+			</div>
+			<!-- /.flex-container -->
+		</main>
 
 
 
-	<footer>
-		<p>このサイトはあくまでも個人の意見です</p>
-		<p>Copyright Tokyo Kanko Inc. 2020 All Rights Reserved.</p>
-	</footer>
+		<footer>
+			<p>このサイトはあくまでも個人の意見です</p>
+			<p>Copyright Tokyo Kanko Inc. 2020 All Rights Reserved.</p>
+		</footer>
+	</div>
+	<!-- /.wrap -->
 </body>
 
 </html>

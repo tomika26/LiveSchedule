@@ -3,72 +3,77 @@
 <head>
 <meta charset="UTF-8" />
 <title>日程登録</title>
-<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 
 <body>
-	<header>
-		<h1>鑑賞予定・鑑賞済みライブの日程登録</h1>
+	<div class="wrap">
+		<header>
+			<h1>鑑賞予定・鑑賞済みライブの日程登録</h1>
 
-		<div>
-			<p th:text="${session.member.name}"></p>
+			<div class="container">
+				<p th:text="${session.member.name}+'さん'"></p>
 
-			<p>
-				<a th:href="@{/logout}">ログアウト</a>
-			</p>
-		</div>
-	</header>
-
-
-	<nav>
-	<ul>
-		<li>
-			<a th:href="@{/live}">ライブ日程一覧</a>
-		</li>
-		<li>
-			<a th:href="@{/member}">閲覧者の登録</a>
-		</li></ul>
-	</nav>
-	<main>
-		<form action="" method="post" th:object="${live}">
+				<p>
+					<a th:href="@{/logout}">ログアウト</a>
+				</p>
+			</div>
+		</header>
 
 
-			<p>
-				日付 <input type="date" th:field="*{date}">
-			</p>
-			<p>
-				開催場所 <input type="text" th:field="*{place}">
-			</p>
+		<nav>
+			<ul>
+				<li><a th:href="@{/live}">ライブ日程一覧</a></li>
+				<li><a th:href="@{/member}">閲覧者の登録</a></li>
+			</ul>
+		</nav>
+		<main>
+			<div class="flex-container">
+				<form action="" method="post" th:object="${live}">
 
-			<p>
-				イベント名 <input type="text" th:field="*{eventName}">
-			</p>
+					<div class="edit">
+						<p>
+							日付 <input type="date" th:field="*{date}">
+						</p>
+						<p>
+							開催場所 <input type="text" th:field="*{place}">
+						</p>
 
-			<p>
-				目当てのアーティスト <input type="radio" th:field="*{artistId}" value="1">KUZIRA
-				<input type="radio" th:field="*{artistId}" value="2">WANIMA
-				<input type="radio" th:field="*{artistId}" value="3">THEBONEZ
-				<input type="radio" th:field="*{artistId}" value="4">SHADOWS
-				<input type="radio" th:field="*{artistId}" value="5" />RADWIMPS
+						<p>
+							イベント名 <input type="text" th:field="*{eventName}">
+						</p>
 
-			</p>
-			<p th:errors="*{impression}"></p>
-			<p>
-				感想
-				<textarea id="" cols="50" rows="10" th:field="*{impression}">
-				ここに書く
+						<p>
+							目当てのアーティスト <input type="radio" th:field="*{artistId}" value="1">KUZIRA
+							<input type="radio" id="select_radio1" th:field="*{artistId}" value="2"><label for="select_radio1">WANIMA</label>
+							<input type="radio" th:field="*{artistId}" value="3">THEBONEZ
+							<input type="radio" th:field="*{artistId}" value="4">SHADOWS
+							<input type="radio" th:field="*{artistId}" value="5" />RADWIMPS
+
+						</p>
+						<p th:errors="*{impression}"></p>
+						<p>
+							感想
+							<textarea id="" cols="50" rows="10" th:field="*{impression}"
+								placeholder=300文字以内>
+				
 				</textarea>
-			</p>
+						</p>
 
 
-			<!--  <input type="hidden" th:field="*{name}" />-->
-			<input type="submit" value="更新">
+						<!--  <input type="hidden" th:field="*{name}" />-->
+						<input type="submit" value="更新">
 
-
-		</form>
-
-	</main>
-	<footer></footer>
+					</div>
+				</form>
+			</div>
+			<!-- /.flex-container -->
+		</main>
+		<footer>
+			<small> Copyright © 2023 Football History Archives. All
+				Rights Reserved. </small>
+		</footer>
+	</div>
 </body>
 
 </html>
