@@ -3,44 +3,52 @@
 <head>
 <meta charset="UTF-8" />
 <title>閲覧者登録</title>
+<link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 
 <body>
-	<div>
-		<h1>閲覧者の登録</h1>
-	</div>
+	<div class="wrap">
+		<header>
+			<div>
+				<h1>閲覧者の登録</h1>
+			</div>
 
-	<div>
-		<p>管理者</p>
-		<p>
-			<a th:href="@{/logout}">ログアウト</a>
-		</p>
-	</div>
-
-	<div>
-		<p><a th:href="@{/live}">戻る</a></p>
+			<div class="container">
+				<p>管理者用ページ</p>
+				<p>
+					<a th:href="@{/logout}">ログアウト</a>
+				</p>
+			</div>
 		
-
-	</div>
-
-	<div>
-		<h2>現在の登録者</h2>
-		<table class="table" border="1">
-			<tr>
-				<th>NO.</th>
-				<th>ID</th>
-				<th>Pass</th>
-				<th>名前</th>
-			</tr>
-			<tr th:each="member : ${members}" >
-				<td>[[${member.id}]]</td>
-				<td>[[${member.loginId}]]</td>
-				<td>[[${member.loginPass}]]</td>
-				<td>[[${member.name}]]</td>
-			</tr>
-		</table>
-		<input type="submit" value="更新">
-	</div>
+		<nav>
+			<div>
+				<p>
+					<a th:href="@{/live}">戻る</a>
+				</p>
+			</div>
+		</nav></header>
+		<main>
+			<div class="member-list">
+				<h2>現在の登録者</h2>
+				<table class="table">
+					<tr>
+						<th>NO.</th>
+						<th>ID</th>
+						<th>Pass</th>
+						<th>名前</th>
+					</tr>
+					<tr th:each="member : ${members}">
+						<td>[[${member.id}]]</td>
+						<td>[[${member.loginId}]]</td>
+						<td>[[${member.loginPass}]]</td>
+						<td>[[${member.name}]]</td>
+					</tr>
+				</table>
+				<input type="submit" value="更新">
+			</div>
+		</main>
+		</div>
+		<footer></footer>
 </body>
 
 </html>

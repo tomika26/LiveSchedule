@@ -2,19 +2,32 @@
 
 /* ボックスの視覚化 */
 * {
-outline: 1px solid aqua;
+	outline: 1px solid aqua;
 }
 
-
 * {
-box-sizing: border-box;
-/* 各要素がもつデフォルトのマージンを初期化 */
-margin: 0;
+	box-sizing: border-box;
+	/* 各要素がもつデフォルトのマージンを初期化 */
+	margin: 0;
 }
 
 body {
 	background: black url("/image/liveHouse.jpg") no-repeat center center;
-	background-size:cover;
+	background-size: cover;
+}
+
+h1 {
+	display: inline-block;
+	font-size: 40px;
+	letter-spacing: 1px; /*行間*/
+	padding-top: 20px;
+	color: white;
+	text-shadow: 1px 2px 3px #919191;
+}
+
+small {
+	font-size: 10px;
+	line-height: 0.25em;
 }
 
 form {
@@ -24,20 +37,14 @@ form {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #f47d4a;
-	opacity:0.8;
+	background-color: #8000ff;
+	opacity: 0.8;
 	text-align: center;
-	
-	
 }
 
 form h1, form p {
 	color: white;
-	font-weight: 5000;
-  
 }
-
-
 
 form p {
 	font-size: 20px;
@@ -57,7 +64,7 @@ form input[type="text"], form input[type="password"] {
 	text-align: center;
 }
 
-form input[type="id"]:focus, form input[type="password"]:focus {
+form input[type="text"]:focus, form input[type="password"]:focus {
 	width: 280px;
 	background-color: #ffffff;
 }
@@ -80,30 +87,39 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
 	background-color: white;
-	color:black;
+	color: black;
 	border: 2px solid #ff69b4;
 }
 
-.logout{
+.logout {
 	width: 400px;
 	padding: 40px 10px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #f47d4a;
-	opacity:0.8;
+	background-color: #8000ff;
+	opacity: 0.8;
 	text-align: center;
-	
 }
 
+.logout p {
+	padding: 10px;
+}
 
+a {
+	text-decoration: none;
+	color: #2b616d;
+	background-color: #FFFFFF;
+	padding: 1px 10px;
+	border-radius: 10px;
+}
 
 footer {
 	position: absolute;
 	text-align: center;
 	width: 100%;
-	padding : 5px;
+	padding: 5px;
 	bottom: 0;
 	color: white;
 	padding: 5px;

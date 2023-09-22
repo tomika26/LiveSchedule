@@ -9,7 +9,8 @@
 <body>
 	<div class="wrap">
 		<header>
-			<h1>鑑賞予定・鑑賞済みライブの日程登録</h1>
+		<h1>Live Diary</h1>
+			<h2>鑑賞予定・鑑賞済みライブの日程登録</h2>
 
 			<div class="container">
 				<p th:text="${session.member.name}+'さん'"></p>
@@ -18,17 +19,20 @@
 					<a th:href="@{/logout}">ログアウト</a>
 				</p>
 			</div>
-		</header>
+		
 
 
 		<nav>
 			<ul>
 				<li><a th:href="@{/live}">ライブ日程一覧</a></li>
+				<li>鑑賞予定、済みライブ日程一覧</li>
 				<li><a th:href="@{/member}">閲覧者の登録</a></li>
 			</ul>
-		</nav>
+		</nav></header>
 		<main>
 			<div class="flex-container">
+			
+			
 				<form action="" method="post" th:object="${live}">
 
 					<div class="edit">
@@ -44,11 +48,13 @@
 						</p>
 
 						<p>
-							目当てのアーティスト <input type="radio" th:field="*{artistId}" value="1">KUZIRA
-							<input type="radio" id="select_radio1" th:field="*{artistId}" value="2"><label for="select_radio1">WANIMA</label>
-							<input type="radio" th:field="*{artistId}" value="3">THEBONEZ
-							<input type="radio" th:field="*{artistId}" value="4">SHADOWS
-							<input type="radio" th:field="*{artistId}" value="5" />RADWIMPS
+							目当てのアーティスト<br>
+							
+							 <input type="radio" id="kuzira"th:field="*{artistId}" value="1"><label for="kuzira">KUZIRA🐳</label>
+							<input type="radio" id="wanima" th:field="*{artistId}" value="2"><label for="wanima">WANIMA🐊</label>
+							<input type="radio" id="bonez"th:field="*{artistId}" value="3"><label for="bonez">THEBONEZ🦴</label>
+							<input type="radio" id="shadows"th:field="*{artistId}" value="4"><label for="shadows">SHADOWS👥</label>
+							<input type="radio" id="radwimps"th:field="*{artistId}" value="5" /><label for="radwimps">RADWIMPS🎩</label>
 
 						</p>
 						<p th:errors="*{impression}"></p>

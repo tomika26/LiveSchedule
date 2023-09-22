@@ -130,15 +130,15 @@ table {
 	border-collapse: collapse; /* セルの線を重ねる */
 }
 
-#info-date {
+#date {
 	width: 10%;
 }
 
-#info-place {
+#place {
 	width: 7%;
 }
 
-#info-event-name {
+#event-name {
 	width: 15%;
 }
 
@@ -188,15 +188,16 @@ form {
 
 .edit p {
 	padding: 15px;
+	font-weight: 50000;
 	font-size: 20px;
 }
 
-form input[type="text"], form input[type="date"]
+form input[type="text"], form input[type="date"], form input[type="radio"]
 	{
 	margin: 20px auto;
 	border: 2px solid #2b616d;
 	padding: 15px 10px;
-	width: 200px;
+	width: 200px 0;
 	outline: none;
 	border-radius: 24px;
 	text-align: center;
@@ -205,11 +206,6 @@ form input[type="text"], form input[type="date"]
 form input[type="text"]:focus, form input[type="date"]:focus {
 	width: 280px;
 	background-color: #ffffff;
-}
-
-form input[type="radio"],label{
-	margin: 20px auto;
-	padding:20px;
 }
 
 form input[type="submit"] {
@@ -287,10 +283,4 @@ input[type="radio"] {
 	transform-origin: left top;
 }
 
-footer {
-	bottom: 0; /* ページの下端に配置します。 */
-	width: 100%; /* 幅をページの幅いっぱいに設定します。 */
-	color: #fff; /* フッターのテキストカラーを設定します。 */
-	padding: 10px 0; /* フッターの余白を追加します。 */
-	text-align: center; /* フッター内のテキストを中央揃えにします。 */
-}
+

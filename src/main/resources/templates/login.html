@@ -8,7 +8,7 @@
 
 <body>
 	<header class="login">
-		
+		<h1>Live Diary</h1>
 	</header>
 
 
@@ -17,15 +17,15 @@
 		<div>
 			<form action="" method="post" th:object="${member}">
 			
-			<h1>ログイン画面</h1>
-		<p><small>ユーーザID、パスワードをご入力の上、「ログイン」ボタンをクリックしてください。</small></p>
+			<h1>ログイン</h1>
+		<p><small>ユーーザID、パスワードをご入力の上、<br>「ログイン」ボタンをクリックしてください。</small></p>
 				<p th:errors="*{loginId}"></p>
 				<p>
-					ログインID: <input type="text" th:field="*{loginId}" autofocus="focus">
+					ログインID <input type="text" th:field="*{loginId}" autofocus="focus">
 				</p>
 				<p th:errors="*{loginPass}"></p>
 				<p>
-					パスワード： <input type="password" th:field="*{loginPass}">
+					パスワード <input type="password" th:field="*{loginPass}">
 				</p>
 
 				<input type="submit" value="ログイン">
