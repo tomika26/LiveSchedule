@@ -20,17 +20,21 @@
 				</p>
 			</div>
 			<!-- /.container -->
-		
-		<nav>
-			<ul>
-				<li>ライブ日程一覧</li>
-				<li><a th:href="@{/live/edit}">鑑賞予定のライブ日程の登録</a></li>
-				<li><a th:href="@{/member}">閲覧者の登録</a></li>
-			</ul>
-		</nav></header>
+
+			<nav>
+				<ul>
+					<li>ライブ日程一覧</li>
+					<li id="live-edit"><a th:href="@{/live/edit}">鑑賞予定のライブ日程の登録</a></li>
+					<li id="member"><a th:href="@{/member}">閲覧者の登録</a></li>
+				</ul>
+			</nav>
+		</header>
 		<main>
 			<div class="flex-container">
 				<form action="@{/live/edit}" method="post" th:object="${schedules}">
+
+					<input type="text" /> <input type="submit" value="検索" />
+
 					<table class="table">
 
 						<tr>
@@ -46,12 +50,12 @@
 
 						<tr id="live-information" th:each="schedule : ${schedules}">
 							<td id="number">[[${schedule.id}]]</td>
-							<td id="info-date">[[${#temporals.format(schedule.date, 'yyyy年
-								MM月dd日')}]]</td>
+							<td id="info-date">[[${#temporals.format(schedule.date,
+								'yyyy年 MM月dd日')}]]</td>
 							<td id="info-place">[[${schedule.place}]]</td>
 							<td id="info-event-name">[[${schedule.eventName}]]</td>
 							<td>[[${schedule.name}]]</td>
-							<td>[[${schedule.impression}]]</td>
+							<td id="info-impression">[[${schedule.impression}]]</td>
 
 							<td id="edit"><a
 								th:href="@{/live/edit/{id}(id=${schedule.id})}">編集</a></td>

@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-/* ボックスの視覚化 */
-* {
-	outline: 1px solid aqua;
-}
 
 
 /* 初期化 */
@@ -22,13 +18,14 @@ html {
 	font-family: Roboto, 'Segoe UI', Arial, Meiryo, sans-serif;
 }
 
-html, body {
+body {
 	/* .wrap の高さが100%になるために必要 */
 	height: 100%;
 }
 
 body {
-	background-color: black;
+	background-image: url(/image/mirrorBall.jpg);
+	background-size:cover;
 }
 
 .wrap {
@@ -81,19 +78,20 @@ nav {
 
 nav ul,nav a{
 	display: flex;
-	padding: 50px 20px;
+	padding: 10px 20px;
 }
 
 nav ul li,nav a{
-	width: 250px;
-	height: 54px;
+	
+	padding:30px;
 	margin-right: 5px;
 	color: black;
 	font-size: 16px;
 	font-weight: bold;
-	line-height: 54px;
+	
 	text-align: center;
 	text-shadow: 1px 2px 3px #919191;
+	
 }
 
 nav a {
@@ -102,7 +100,7 @@ nav a {
 	text-decoration: none;
 	color: #fff;
 	font-weight: normal;
-	text-align: center;
+
 }
 
 nav a:hover {
@@ -140,6 +138,10 @@ table {
 
 #info-event-name {
 	width: 15%;
+}
+
+#info-impression{
+	text-align:left;
 }
 
 tr:nth-child(odd) {

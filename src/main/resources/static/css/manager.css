@@ -1,10 +1,6 @@
 @charset "utf-8";
 
 /* ボックスの視覚化 */
-* {
-	outline: 1px solid aqua;
-}
-
 
 /* 初期化 */
 ul {
@@ -51,7 +47,8 @@ h1 {
 }
 
 h2 {
-	color: white;
+	color: black;
+	font-size: 20px;
 }
 
 header .container {
@@ -73,36 +70,17 @@ header .container {
 
 nav {
 	margin: 20px 0;
+	padding: 40px;
 	background-image: url(/image/live3.jpg);
 	background-position: center;
-}
-
-
-
-nav ul,nav a{
-	display: flex;
-	padding: 50px 20px;
-}
-
-nav ul li,nav a{
-	width: 250px;
-	height: 54px;
-	margin-right: 5px;
-	color: black;
-	font-size: 16px;
-	font-weight: bold;
-	line-height: 54px;
-	text-align: center;
-	text-shadow: 1px 2px 3px #919191;
+	padding: 40px;
 }
 
 nav a {
-	display: block;
-	height: 54px;
+	display: inline-block;
 	text-decoration: none;
 	color: #fff;
-	font-weight: normal;
-	text-align: center;
+	font-size: 20px;
 }
 
 nav a:hover {
@@ -111,8 +89,10 @@ nav a:hover {
 	transform: scale(1.5, 1.5);
 }
 
-.flex-container {
+main {
 	display: flex;
+	background-color: white;
+	padding: 10px;
 }
 
 main th {
@@ -126,20 +106,8 @@ main th {
 	font-size: 1.5em; /* 20px */
 }
 
-table {
-	border-collapse: collapse; /* セルの線を重ねる */
-}
-
-#date {
-	width: 10%;
-}
-
-#place {
-	width: 7%;
-}
-
-#event-name {
-	width: 15%;
+.member-list, .table {
+	width: 100%;
 }
 
 tr:nth-child(odd) {
@@ -157,103 +125,35 @@ tr th {
 
 td {
 	padding: 10px; /* 余白指定 */
+	font-size: 1.5em;
 }
 
-#live-information a {
-	text-decoration: none;
-	color: #2b616d;
+.button {
+	margin: 10px;
 }
 
-#number {
-	background-color: #b2dbd5; /* 背景色指定 */
-	color: #fff; /* 文字色指定 */
-	font-weight: normal; /* 文字の太さ指定 */
-	position: relative; /* 位置指定 */
-	z-index: 10; /* 重なり調整 */
-}
-
-form {
-	width: 100%;
-	padding: 10px 10px;
-	background-color: #b2dbd5;
+.button-glow {
 	text-align: center;
-	/* 幅を決めて左右のマージンをauto にすると中央に配置できる */
-	margin: 0 auto;
+	box-sizing: border-box;
+	display: inline-block;
+	border-radius: 10px;
+	margin: 0 10px; /* 光る部分を空けるための余白 */
+	padding: 0.5em 2em;
+	line-height: 1.5;
+	color: #525252;
+	font-weight: bold;
+	border: 1px solid #fff;
+	animation: 1s glow infinite alternate;
+	background: linear-gradient(#b2dbd5, #b2dbd5); /*　青 */
+	box-shadow: 0 0 10px 3px rgba(68, 127, 255, 0.5)
 }
 
-.edit {
-	color: black;
-	background-color: white;
+.button-glow:hover {
+	animation: 0.3s glow linear infinite alternate;
 }
 
-.edit p {
-	padding: 15px;
-	font-weight: 50000;
-	font-size: 20px;
-}
-
-form input[type="text"], form input[type="date"], form input[type="radio"]
-	{
-	margin: 20px auto;
-	border: 2px solid #2b616d;
-	padding: 15px 10px;
-	width: 200px 0;
-	outline: none;
-	border-radius: 24px;
-	text-align: center;
-}
-
-form input[type="text"]:focus, form input[type="date"]:focus {
-	width: 280px;
-	background-color: #ffffff;
-}
-
-form input[type="submit"] {
-	border: 0;
-	background: #2b616d;
-	display: block;
-	margin: 20px auto;
-	padding: 15px 10px;
-	width: 200px;
-	outline: none;
-	color: white;
-	border-radius: 25px;
-	transition: 0.25s;
-	text-align: center;
-	cursor: pointer;
-}
-
-form input[type="submit"]:hover {
-	background-color: white;
-	color: black;
-	border: 2px solid #2b616d;
-}
-
-textarea {
-	border: 0;
-	background: none;
-	display: block;
-	margin: 20px auto;
-	border: 2px solid #2b616d;
-	padding: 15px 10px;
-	width: 200px 0;
-	outline: none;
-	border-radius: 24px;
-}
-
-/* チェックボックスデザイン */
-input[type="radio"] {
-	cursor: pointer;
-	padding-left: 30px; /*label手前にチェックボックス用の余白を開ける*/
-	vertical-align: middle;
-	position: relative;
-	cursor: pointer;
-}
-
-.member-list{
-	width:100%;
-	margin:0;
-	padding:20%;
+.button-glow:active, .button-glow:focus {
+	background: #8080ff;
 }
 
 #page-top {
@@ -282,5 +182,3 @@ input[type="radio"] {
 	transform: rotate(35deg);
 	transform-origin: left top;
 }
-
-

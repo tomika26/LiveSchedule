@@ -1,9 +1,6 @@
 @charset "utf-8";
 
-/* ボックスの視覚化 */
-* {
-	outline: 1px solid aqua;
-}
+
 
 * {
 	box-sizing: border-box;
