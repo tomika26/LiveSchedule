@@ -23,6 +23,14 @@
 		WHERE id = #{Id}
 	</select>
 
+
+	<select id="search" resultType="Live" parameterType="localdate">
+	<![CDATA[
+	SELECT * FROM schedules
+	WHERE date >=#{searchDate}
+	]]>
+	</select>
+
 	<insert id="insert" parameterType="Live">
 
 		INSERT INTO schedules
@@ -35,10 +43,12 @@
 	<update id="update" parameterType="Live">
 		UPDATE schedules
 		SET
-		date =#{date},
+		date
+		=#{date},
 		place = #{place},
 		event_name = #{eventName},
-		artist_id =#{artistId},
+		artist_id
+		=#{artistId},
 		impression=#{impression}
 		WHERE
 		id = #{id}
@@ -49,6 +59,7 @@
 		WHERE id
 		= #{id}
 	</delete>
+
 
 
 </mapper>

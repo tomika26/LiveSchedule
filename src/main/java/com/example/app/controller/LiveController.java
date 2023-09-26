@@ -1,5 +1,8 @@
 package com.example.app.controller;
 
+import java.sql.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -26,7 +29,17 @@ public class LiveController {
 	@GetMapping("/live")
 	public String list(Model model) {
 		model.addAttribute("schedules", mapper.selectAll());
+
 		return "liveList";
+	}
+
+	@GetMapping("/live")
+	public String search(@ModelAttribute("live") Live live, 
+			@DateTimeFormat(pattern="yyyyMM-dd")Date bookingDate,
+			Model model) {
+
+		model.addAttribute("schedules" ,mapper.search(null));
+		return "LiveList";
 	}
 
 	@GetMapping("/live/edit")
@@ -39,7 +52,7 @@ public class LiveController {
 	public String editPost(@Valid @ModelAttribute("live") Live live,
 			Errors errors) {
 		if (errors.hasErrors()) {
-			
+
 			return "liveEdit";
 		}
 		mapper.insert(live);
