@@ -13,7 +13,7 @@ import lombok.Data;
 public class Live {
 	private Integer id;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@NotNull
+	
 	private LocalDate date;
 	private String place;
 	@NotNull
@@ -22,4 +22,5 @@ public class Live {
 	private String name;
 	@Size(min = 0, max = 300,message="感想は{max}文字までです")
 	private String impression;
+	private String searchDate;
 }

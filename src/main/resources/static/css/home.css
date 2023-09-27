@@ -126,10 +126,12 @@ main th {
 
 table {
 	border-collapse: collapse; /* セルの線を重ねる */
+	
 }
 
 #info-date {
 	width: 10%;
+
 }
 
 #info-place {
@@ -159,6 +161,7 @@ tr th {
 
 td {
 	padding: 10px; /* 余白指定 */
+		font-size:15px;
 }
 
 #live-information a {

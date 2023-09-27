@@ -14,12 +14,18 @@ public interface ScheduleMapper {
 
 	Live selectById(Integer id);
 
-	List<Live> search(LocalDate date);
+	
 
 	void insert(Live live);
 
 	void update(Live live);
 
 	void delete(Integer id);
+
+	List<Live> selectByDate(LocalDate date);
+
+	
+
+	
 
 }

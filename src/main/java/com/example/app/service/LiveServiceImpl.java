@@ -1,5 +1,6 @@
 package com.example.app.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -45,4 +46,14 @@ public class LiveServiceImpl implements LiveService {
 
 	}
 
+	
+	@Override
+	public List<Live> getLiveByDate(LocalDate date) {
+	
+		return mapper.selectByDate(date);
+	}
+
+	
+
+	
 }

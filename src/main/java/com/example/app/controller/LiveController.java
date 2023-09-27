@@ -1,6 +1,7 @@
 package com.example.app.controller;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.app.domain.Live;
@@ -33,14 +35,22 @@ public class LiveController {
 		return "liveList";
 	}
 
-	@GetMapping("/live")
-	public String search(@ModelAttribute("live") Live live, 
-			@DateTimeFormat(pattern="yyyyMM-dd")Date bookingDate,
+	@PostMapping("/live")
+	public String search(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
 			Model model) {
+		List<Live> liveDate = service.getLiveByDate(date);
+		System.out.println(liveDate);
+		if (liveDate.size() == 0) {
+			System.out.println("情報はありません。");
+			model.addAttribute("notDate");
+			return "redirect:/live";
+		}
 
-		model.addAttribute("schedules" ,mapper.search(null));
-		return "LiveList";
+		model.addAttribute("schedules", liveDate);
+		return "liveList";
 	}
+
+	
 
 	@GetMapping("/live/edit")
 	public String edit(Model model) {

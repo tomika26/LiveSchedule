@@ -24,10 +24,21 @@
 	</select>
 
 
-	<select id="search" resultType="Live" parameterType="localdate">
+	<select id="selectByDate" resultType="Live"
+		parameterType="java.time.LocalDate">
 	<![CDATA[
-	SELECT * FROM schedules
-	WHERE date >=#{searchDate}
+	SELECT
+	 schedules.id,
+	 schedules.date,
+	 schedules.place,
+	 schedules.event_name,
+	 schedules.artist_id,
+	 schedules.impression,
+	 artists.name
+	FROM schedules
+	JOIN artists
+	ON schedules.artist_id = artists.id
+	WHERE date =#{searchDate}
 	]]>
 	</select>
 

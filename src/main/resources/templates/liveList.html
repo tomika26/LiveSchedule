@@ -31,9 +31,10 @@
 		</header>
 		<main>
 			<div class="flex-container">
-				<form action="@{/live/edit}" method="post" th:object="${schedules}">
-
-					<input type="text" /> <input type="submit" value="検索" />
+				<form th:action="@{/live}" method="post">
+					<p th:text="${notDate}"></p>
+					<input type="date" name="date" placeholder="例）2023-01-01" /> 
+					<input type="submit" value="検索" />
 
 					<table class="table">
 
