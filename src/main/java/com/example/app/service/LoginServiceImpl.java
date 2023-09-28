@@ -37,4 +37,12 @@ public class LoginServiceImpl implements LoginService {
 		return mapper.selectAll();
 	}
 
+	
+
+	@Override
+	public Member getMemberById(String loginId) {
+		return mapper.selectByLoginId(loginId);
+		
+	}
+
 }

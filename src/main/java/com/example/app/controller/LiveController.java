@@ -37,20 +37,28 @@ public class LiveController {
 
 	@PostMapping("/live")
 	public String search(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
-			Model model) {
+			@RequestParam(required = false) String inputValue,
+			Model model, RedirectAttributes rd) {
 		List<Live> liveDate = service.getLiveByDate(date);
 		System.out.println(liveDate);
+
+		if (inputValue != null && inputValue.isEmpty()) {
+			inputValue = null;
+		}
+		if (date == null) {
+			model.addAttribute("notDate", "日付を選択してください");
+			return "liveList";
+		}
+
 		if (liveDate.size() == 0) {
 			System.out.println("情報はありません。");
-			model.addAttribute("notDate");
+			rd.addFlashAttribute("notDate", "情報はありません");
 			return "redirect:/live";
 		}
 
 		model.addAttribute("schedules", liveDate);
 		return "liveList";
 	}
-
-	
 
 	@GetMapping("/live/edit")
 	public String edit(Model model) {

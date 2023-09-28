@@ -11,4 +11,8 @@ public interface LoginService {
 			throws Exception;
 
 	List<Member> getAllMembers(); // すべてのMember情報を取得
+	
+	Member getMemberById(String loginId);
+
+	
 }
