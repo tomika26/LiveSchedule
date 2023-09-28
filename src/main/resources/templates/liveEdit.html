@@ -37,8 +37,8 @@
 				<form action="" method="post" th:object="${live}">
 
 					<div class="edit">
-						<p>
-							日付 <input type="date" th:field="*{date}">
+						<p><label for="edit-date">日付</label>
+							 <input type="date" th:field="*{date}" id="edit-date"  min="1995-01-01" max="2100-01-01" required>
 						</p>
 						<p>
 							開催場所 <input type="text" th:field="*{place}">

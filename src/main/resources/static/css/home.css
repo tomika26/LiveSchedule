@@ -124,6 +124,11 @@ main th {
 	font-size: 1.5em; /* 20px */
 }
 
+#search input{
+	margin:10px;
+	display:inline-block;
+}
+
 table {
 	border-collapse: collapse; /* セルの線を重ねる */
 	
@@ -207,7 +212,7 @@ form input[type="text"], form input[type="date"]
 	text-align: center;
 }
 
-form input[type="text"]:focus, form input[type="date"]:focus {
+form input[type="text"]:focus {
 	width: 280px;
 	background-color: #ffffff;
 }

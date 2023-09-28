@@ -32,10 +32,12 @@
 		<main>
 			<div class="flex-container">
 				<form th:action="@{/live}" method="post">
-					<p th:text="${notDate}"></p>
-					<input type="date" name="date" placeholder="例）2023-01-01" /> 
-					<input type="submit" value="検索" />
-
+					
+					<div id="search">
+					<p th:text="${notDate}" >[[{$notDate}]]</p>
+						<input type="date" name="date" min="1995-01-01" max="2100-01-01"  required/> 
+						<input type="submit" value="検索" />
+					</div><!-- /.search -->
 					<table class="table">
 
 						<tr>
