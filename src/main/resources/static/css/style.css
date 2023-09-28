@@ -1,23 +1,29 @@
 @charset "utf-8";
 
 
-
 * {
 	box-sizing: border-box;
 	/* 各要素がもつデフォルトのマージンを初期化 */
 	margin: 0;
 }
-
-body {
-	background: black url("/image/liveHouse.jpg") no-repeat center center;
-	background-size: cover;
+body:after {/*擬似要素をつくる*/
+  position: fixed;/*固定配置*/
+  top: 0; left: 0;/*左上に固定*/
+  width: 100%;
+  height: 100%;/*画面全体を覆う*/
+  content: "";
+  background: #f89174;/*保険用*/
+  
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbcacb', endColorstr='#f79697',GradientType=0 );
+  background: linear-gradient(to bottom, #cac2bf 3%,#000000 20%);
+  z-index: -1;
 }
-
 h1 {
 	display: inline-block;
 	font-size: 40px;
 	letter-spacing: 1px; /*行間*/
-	padding-top: 20px;
+	padding-top: 20px ;
+	margin:20px;
 	color: white;
 	text-shadow: 1px 2px 3px #919191;
 }
@@ -25,6 +31,11 @@ h1 {
 small {
 	font-size: 10px;
 	line-height: 0.25em;
+}
+
+img{
+	width:100%;
+	height:auto;
 }
 
 form {
