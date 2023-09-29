@@ -38,6 +38,10 @@ img{
 	height:auto;
 }
 
+.error{
+	font-size:12px;
+}
+
 form {
 	width: 400px;
 	padding: 40px 10px;
@@ -45,8 +49,8 @@ form {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #8000ff;
-	opacity: 0.8;
+	background-color:rgba(128,0,255,0.6);
+	
 	text-align: center;
 }
 
@@ -106,8 +110,7 @@ form input[type="submit"]:hover {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #8000ff;
-	opacity: 0.8;
+	background-color:rgba(128,0,255,0.6);
 	text-align: center;
 }
 

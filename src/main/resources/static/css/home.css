@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+* {
+	outline: 1px solid aqua;
+}
 
 
 /* 初期化 */
@@ -25,7 +28,18 @@ body {
 
 body {
 	background-image: url(/image/mirrorBall.jpg);
-	background-size:cover;
+	background-size: cover;
+}
+
+.error {
+	
+	position: center;
+	background:rgba(255,255,0,0.4) ;
+	
+	text-align: center;
+	font-size: 20px;
+	width:35%;
+	margin: auto;
 }
 
 .wrap {
@@ -74,24 +88,19 @@ nav {
 	background-position: center;
 }
 
-
-
-nav ul,nav a{
+nav ul, nav a {
 	display: flex;
 	padding: 10px 20px;
 }
 
-nav ul li,nav a{
-	
-	padding:30px;
+nav ul li, nav a {
+	padding: 30px;
 	margin-right: 5px;
 	color: black;
 	font-size: 16px;
 	font-weight: bold;
-	
 	text-align: center;
 	text-shadow: 1px 2px 3px #919191;
-	
 }
 
 nav a {
@@ -100,7 +109,6 @@ nav a {
 	text-decoration: none;
 	color: #fff;
 	font-weight: normal;
-
 }
 
 nav a:hover {
@@ -124,19 +132,17 @@ main th {
 	font-size: 1.5em; /* 20px */
 }
 
-#search input{
-	margin:10px;
-	display:inline-block;
+#search input {
+	margin: 10px;
+	display: inline-block;
 }
 
 table {
 	border-collapse: collapse; /* セルの線を重ねる */
-	
 }
 
 #info-date {
 	width: 10%;
-
 }
 
 #info-place {
@@ -147,8 +153,8 @@ table {
 	width: 15%;
 }
 
-#info-impression{
-	text-align:left;
+#info-impression {
+	text-align: left;
 }
 
 tr:nth-child(odd) {
@@ -166,7 +172,7 @@ tr th {
 
 td {
 	padding: 10px; /* 余白指定 */
-		font-size:15px;
+	font-size: 15px;
 }
 
 #live-information a {
@@ -201,8 +207,7 @@ form {
 	font-size: 20px;
 }
 
-form input[type="text"], form input[type="date"]
-	{
+form input[type="text"], form input[type="date"] {
 	margin: 20px auto;
 	border: 2px solid #2b616d;
 	padding: 15px 10px;
@@ -217,16 +222,16 @@ form input[type="text"]:focus {
 	background-color: #ffffff;
 }
 
-form input[type="radio"],label{
+form input[type="radio"], label {
 	margin: 20px auto;
-	padding:20px;
+	padding: 20px;
 }
 
 form input[type="submit"] {
 	border: 0;
 	background: #2b616d;
-	display: block;
-	margin: 20px auto;
+	
+	margin: 0 auto 20px auto;
 	padding: 15px 10px;
 	width: 200px;
 	outline: none;
@@ -247,7 +252,7 @@ textarea {
 	border: 0;
 	background: none;
 	display: block;
-	margin: 20px auto;
+	margin: 0px auto;
 	border: 2px solid #2b616d;
 	padding: 15px 10px;
 	width: 200px 0;
@@ -264,10 +269,10 @@ input[type="radio"] {
 	cursor: pointer;
 }
 
-.member-list{
-	width:100%;
-	margin:0;
-	padding:20%;
+.member-list {
+	width: 100%;
+	margin: 0;
+	padding: 20%;
 }
 
 #page-top {
