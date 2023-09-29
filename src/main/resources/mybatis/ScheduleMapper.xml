@@ -15,6 +15,7 @@
 		FROM schedules
 		JOIN artists
 		ON schedules.artist_id = artists.id
+		ORDER BY date DESC
 	</select>
 
 	<select id="selectById" resultType="Live" parameterType="int">
