@@ -38,27 +38,27 @@ public class LoginContoroller {
 			return "login";
 		}
 
-		Member loginMember =
-		    service.isCorrectIdAndPassword(member.getLoginId(), member.getLoginPass());
-		
+		Member loginMember = service.isCorrectIdAndPassword(member.getLoginId(), member.getLoginPass());
+
 		if (loginMember == null) {
-			errors.rejectValue("loginId", "error.incorrect_id_password","IDまたはパスワードが正しくありません");
+			errors.rejectValue("loginId", "error.incorrect_id_password", "IDまたはパスワードが正しくありません");
 			return "login";
 		}
 		session.setAttribute("member", loginMember);
+		session.setAttribute("loginId", loginMember.getLoginId());
+System.out.println(loginMember);
 		return "redirect:/live";
 	}
 
 	@GetMapping("/logout")
 	public String showLogout(Model model) {
-		
-		
+
 		return "logout";
 	}
-	
+
 	@GetMapping("/login")
 	public String logout(HttpSession session) {
-		
+
 		// セッションを破棄し、ログアウトへ遷移
 		session.invalidate();
 		return "redirect:/";
