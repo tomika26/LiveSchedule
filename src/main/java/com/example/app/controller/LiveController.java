@@ -46,13 +46,13 @@ public class LiveController {
 			inputValue = null;
 		}
 		if (date == null) {
-			model.addAttribute("notDate", "日付を選択してください");
+			model.addAttribute("noDate", "日付を選択してください");
 			return "liveList";
 		}
 
 		if (liveDate.size() == 0) {
 			System.out.println("情報はありません。");
-			rd.addFlashAttribute("notDate", "情報はありません");
+			rd.addFlashAttribute("noDate", "ライブの情報はありません");
 			return "redirect:/live";
 		}
 

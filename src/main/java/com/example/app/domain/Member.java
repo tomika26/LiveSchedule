@@ -7,9 +7,9 @@ import lombok.Data;
 public class Member {
 
 	private Integer id;
-	@NotBlank
+	@NotBlank(message = "※必須項目です")
 	private String loginId;
-	@NotBlank
+	@NotBlank(message = "※必須項目です")
 	private String loginPass;
 	private String name;
 }

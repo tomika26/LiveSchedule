@@ -22,6 +22,7 @@
 			<!-- /.container -->
 
 			<nav>
+				
 				<ul>
 					<li>ライブ日程一覧</li>
 					<li id="live-edit"><a th:href="@{/live/edit}">鑑賞予定のライブ日程の登録</a></li>
@@ -32,12 +33,14 @@
 		<main>
 			<div class="flex-container">
 				<form th:action="@{/live}" method="post">
-					
+					<p th:text="${statusMessage}" class="error"></p>
+					<p class=error>[[${unauthorized}]]</p>
 					<div id="search">
-					<p th:text="${notDate}" >[[{$notDate}]]</p>
-						<input type="date" name="date" min="1995-01-01" max="2100-01-01"  required/> 
-						<input type="submit" value="検索" />
-					</div><!-- /.search -->
+						<p th:text="${noDate}" class="error">[[{$noDate}]]</p>
+						<input type="date" name="date" min="2000-01-01" max="2060-01-01"
+							required /> <input type="submit" value="検索" />
+					</div>
+					<!-- /.search -->
 					<table class="table">
 
 						<tr>
@@ -68,7 +71,7 @@
 						</tr>
 
 					</table>
-					<p th:text="${statusMessage}"></p>
+
 
 				</form>
 			</div>

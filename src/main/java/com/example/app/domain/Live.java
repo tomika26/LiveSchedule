@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -12,10 +12,10 @@ import lombok.Data;
 
 public class Live {
 	private Integer id;
-	@DateTimeFormat(pattern = "yy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	private String place;
-	@NotNull
+	@NotBlank
 	private String eventName;
 	private Integer artistId;
 	private String name;

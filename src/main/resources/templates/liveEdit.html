@@ -37,8 +37,10 @@
 				<form action="" method="post" th:object="${live}">
 
 					<div class="edit">
-						<p><label for="edit-date">日付</label>
-							 <input type="date" th:field="*{date}" id="edit-date"  min="1995-01-01" max="2100-01-01" required>
+						<p>
+							日付  <input type="date"
+								th:field="*{date}" id="edit-date" min="2000-01-01"
+								max="2060-01-01" required>
 						</p>
 						<p>
 							開催場所 <input type="text" th:field="*{place}">
@@ -60,7 +62,7 @@
 								for="radwimps">RADWIMPS🎩</label>
 
 						</p>
-						<p th:errors="*{impression}"></p>
+						<p th:errors="*{impression}" class="error"></p>
 						<p>
 							感想
 							<textarea id="" cols="50" rows="10" th:field="*{impression}"
