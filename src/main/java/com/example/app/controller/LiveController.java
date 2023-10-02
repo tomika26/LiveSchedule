@@ -74,6 +74,7 @@ public class LiveController {
 			return "liveEdit";
 		}
 		mapper.insert(live);
+		
 		return "redirect:/live";
 	}
 

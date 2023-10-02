@@ -29,7 +29,7 @@
 			</nav>
 		</header>
 		<main>
-		
+
 			<div class="member-list">
 				<h2>現在の登録者</h2>
 				<table class="table">
@@ -47,8 +47,11 @@
 					</tr>
 				</table>
 				<div class="button">
+					<input type="number" step="1" /> 
+					<a th:href="@{/member/{id}/delete(id=${member.id})}">削除</a>
+					<input type="submit" value="削除" />
 					<input type="submit" value="更新" class="button-glow">
-				</div> 
+				</div>
 			</div>
 			<div class="top">
 				<a href="#" id="page-top">TOP</a>

@@ -15,7 +15,7 @@ public class Live {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	private String place;
-	@NotBlank
+	@NotBlank(message= "イベントの名前を入力してください")
 	private String eventName;
 	private Integer artistId;
 	private String name;

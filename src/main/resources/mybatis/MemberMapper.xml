@@ -13,8 +13,30 @@
 	<select id="selectAll" resultType="Member">
 		SELECT * FROM members
 	</select>
-	
-	
+
+	<insert id="insert" parameterType="Member">
+
+		INSERT INTO members
+		(login_id,login_pass,name)
+		VALUES
+		(#{loginId},#{loginPass},#{name})
+
+	</insert>
+
+	<update id="update" parameterType="Member">
+		UPDATE members
+		SET
+		login_id=#{loginId},
+		login_pass = #{loginPass},
+		name = #{name},
+		WHERE
+		id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM members
+		WHERE id=#{id}
+	</delete>
 
 </mapper>
 

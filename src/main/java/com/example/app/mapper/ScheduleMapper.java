@@ -24,8 +24,4 @@ public interface ScheduleMapper {
 
 	List<Live> selectByDate(LocalDate date);
 
-	
-
-	
-
 }
