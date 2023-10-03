@@ -20,11 +20,11 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public Member isCorrectIdAndPassword(String loginId, String loginPass) throws Exception {
 		Member login = mapper.selectByLoginId(loginId);
-
+// ログインIDに該当する管理者がいない
 		if (login == null) {
 			return null;
 		}
-
+// パスワードが異なる
 		if (!BCrypt.checkpw(loginPass, login.getLoginPass())) {
 			return null;
 		}
@@ -44,5 +44,7 @@ public class LoginServiceImpl implements LoginService {
 		return mapper.selectByLoginId(loginId);
 		
 	}
+
+	
 
 }
