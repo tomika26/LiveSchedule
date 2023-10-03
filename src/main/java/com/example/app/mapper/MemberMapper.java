@@ -10,9 +10,10 @@ import com.example.app.domain.Member;
 public interface MemberMapper {
 
 	Member selectByLoginId(String loginId);
-	List<Member> selectAll();
-
 	
+	Member selectById(Integer id);
+	
+	List<Member> selectAll();
 
 	void insert(Member member);
 

@@ -47,11 +47,22 @@
 					</tr>
 				</table>
 				<div class="button">
-					<input type="number" step="1" /> 
-					<a th:href="@{/member/{id}/delete(id=${member.id})}">削除</a>
-					<input type="submit" value="削除" />
-					<input type="submit" value="更新" class="button-glow">
-				</div>
+				<form action="/member/delete" method="post">
+					
+						<p th:text="${notDeleteMessage}" class=error>[[${notDeleteMessage}]]</p>
+
+						<input type="number" min="1" step="1" name="memberNo" />
+						<!--  <a th:href="@{/member/{id}/delete(id=${member.id})}">削除</a>  -->
+						<input type="submit" value="削除" class="button-glow" />
+</form>
+<form action="" method="post" th:object="${member}">
+						ID:<input type="text" th:field="*{loginId}" /> 
+						Pass:<input type="password" th:field="*{loginPass}" />
+						名前：<input type="text" th:field="*{name}" /> <input
+							type="submit" value="登録" class="button-glow">
+							</form>
+					</div>
+				
 			</div>
 			<div class="top">
 				<a href="#" id="page-top">TOP</a>

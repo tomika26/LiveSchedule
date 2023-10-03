@@ -1,9 +1,13 @@
 package com.example.app.controller;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.app.domain.Member;
@@ -11,6 +15,7 @@ import com.example.app.mapper.MemberMapper;
 import com.example.app.service.LoginService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -39,15 +44,46 @@ public class MemberController {
 
 	}
 
-	@GetMapping("member/{id}/delete")
-	public String delete(
-			@PathVariable("id") Integer id,
-			Model model,
-			RedirectAttributes rd) {
+	@GetMapping("/member/edit")
+	public String edit(Model model) {
+		model.addAttribute("member", new Member());
+		return "member";
+	}
 
-		mapper.delete(id);
+	@PostMapping("/member")
+	public String editPost(@Valid @ModelAttribute("member") Member member,
+			Errors errors) {
+		if (errors.hasErrors()) {
+
+			return "member";
+		}
+		mapper.insert(member);
+
+		return "redirect:/member";
+	}
+
+	@PostMapping("/member/delete")
+	public String deleteMember(@RequestParam(required=false) Integer memberNo,
+			Model model, RedirectAttributes rd) {
+		
+		if(memberNo == null) {
+			rd.addAttribute("notDeleteMessage","NO.を入れてください");
+			return "redirect:/member";
+		}
+		
+		mapper.delete(memberNo);
 		rd.addFlashAttribute("deleteMessage", "削除しました");
 		return "redirect:/member";
 	}
 
+	
+	// パスワードをハッシュ化
+    public static String hashPassword(String plainTextPassword) {
+        return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
+    }
+
+    // パスワードを検証
+    public static boolean verifyPassword(String plainTextPassword, String hashedPassword) {
+        return BCrypt.checkpw(plainTextPassword, hashedPassword);
+    }
 }

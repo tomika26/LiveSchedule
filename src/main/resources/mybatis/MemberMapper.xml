@@ -10,6 +10,17 @@
 
 	</select>
 
+
+	<select id="selectById" resultType="Member"
+		parameterType="string">
+		SELECT * FROM members
+		WHERE id = #{id}
+
+	</select>
+
+
+
+
 	<select id="selectAll" resultType="Member">
 		SELECT * FROM members
 	</select>
@@ -30,12 +41,14 @@
 		login_pass = #{loginPass},
 		name = #{name},
 		WHERE
-		id = #{id}
+		id =
+		#{id}
 	</update>
 
 	<delete id="delete" parameterType="int">
 		DELETE FROM members
-		WHERE id=#{id}
+		WHERE
+		id=#{id}
 	</delete>
 
 </mapper>
