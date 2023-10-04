@@ -106,7 +106,7 @@ main th {
 	font-size: 1.5em; /* 20px */
 }
 
-.member-list, .table {
+.block, .table {
 	width: 100%;
 }
 
@@ -130,6 +130,9 @@ td {
 
 .button {
 	margin: 10px;
+	padding:10px;
+	font-size:200%;
+	background:#2b616d;
 }
 
 .button-glow {
@@ -154,6 +157,15 @@ td {
 
 .button-glow:active, .button-glow:focus {
 	background: #8080ff;
+}
+
+.delete{
+	padding:0 25px;
+}
+
+input{
+	margin:2px;
+	
 }
 
 #page-top {

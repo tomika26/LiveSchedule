@@ -11,6 +11,9 @@ public interface MemberMapper {
 
 	Member selectByLoginId(String loginId);
 	
+	Member findByLoginIdAndLoginPass(String loginId, String loginPass)
+			throws Exception;
+	
 	Member selectById(Integer id);
 	
 	List<Member> selectAll();

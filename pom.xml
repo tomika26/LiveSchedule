@@ -73,8 +73,7 @@
 			<artifactId>jBCrypt</artifactId>
 			<version>0.4.3</version>
 		</dependency>
-
-
+		
 	</dependencies>
 
 	<build>

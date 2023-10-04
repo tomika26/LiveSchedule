@@ -29,43 +29,49 @@
 			</nav>
 		</header>
 		<main>
-
-			<div class="member-list">
-				<h2>現在の登録者</h2>
-				<table class="table">
-					<tr>
-						<th>NO.</th>
-						<th>ID</th>
-						<th>Pass</th>
-						<th>名前</th>
-					</tr>
-					<tr th:each="member : ${members}">
-						<td>[[${member.id}]]</td>
-						<td>[[${member.loginId}]]</td>
-						<td>[[${member.loginPass}]]</td>
-						<td>[[${member.name}]]</td>
-					</tr>
-				</table>
+			<div class="block">
+				<div class="member-list">
+					<h2>現在の登録者</h2>
+					<table class="table">
+						<tr>
+							<th>NO.</th>
+							<th>ID</th>
+							<th>Pass</th>
+							<th>名前</th>
+						</tr>
+						<tr th:each="member : ${members}">
+							<td>[[${member.id}]]</td>
+							<td>[[${member.loginId}]]</td>
+							<td>[[${member.loginPass}]]</td>
+							<td>[[${member.name}]]</td>
+						</tr>
+					</table>
+				</div>
 				<div class="button">
-				<form action="/member/delete" method="post">
-					
-						<p th:text="${notDeleteMessage}" class=error>[[${notDeleteMessage}]]</p>
+					<div class="delete">
+						<form action="/member/delete" method="post">
 
-						<input type="number" min="1" step="1" name="memberNo" />
-						<!--  <a th:href="@{/member/{id}/delete(id=${member.id})}">削除</a>  -->
-						<input type="submit" value="削除" class="button-glow" />
-</form>
-<form action="" method="post" th:object="${member}">
-						ID:<input type="text" th:field="*{loginId}" /> 
-						Pass:<input type="password" th:field="*{loginPass}" />
-						名前：<input type="text" th:field="*{name}" /> <input
-							type="submit" value="登録" class="button-glow">
-							</form>
+							<p th:text="${notDeleteMessage}" class=error>[[${notDeleteMessage}]]</p>
+
+							<input type="number" min="1" step="1" name="memberNo" /> <input
+								type="submit" value="削除" class="button-glow" />
+						</form>
 					</div>
-				
-			</div>
-			<div class="top">
-				<a href="#" id="page-top">TOP</a>
+					<div class="register">
+						<form action="" method="post" th:object="${member}" class="">
+							ID:<input type="text" th:field="*{loginId}" /> Pass:<input
+								type="password" th:field="*{loginPass}" /> 名前：<input
+								type="text" th:field="*{name}" /> <input type="submit"
+								value="登録" class="button-glow">
+
+						</form>
+					</div>
+				</div>
+
+
+				<div class="top">
+					<a href="#" id="page-top">TOP</a>
+				</div>
 			</div>
 		</main>
 	</div>

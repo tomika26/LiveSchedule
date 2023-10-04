@@ -11,6 +11,13 @@
 	</select>
 
 
+	<select id="findByLoginIdAndLoginPass" resultType="Member"
+		parameterType="string">
+		SELECT * FROM members
+		WHERE login_pass = #{loginPass}
+
+	</select>
+
 	<select id="selectById" resultType="Member"
 		parameterType="string">
 		SELECT * FROM members

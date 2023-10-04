@@ -22,8 +22,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MemberController {
 
+	
 	private final MemberMapper mapper;
 	private final LoginService service;
+
 
 	@GetMapping("/member")
 	public String Member(
@@ -44,46 +46,45 @@ public class MemberController {
 
 	}
 
+	@PostMapping("/member")
+	public String editPost(Model model, @Valid @ModelAttribute("member") Member member,
+			Errors errors) {
+		// エラーがある場合はフォームを再表示
+		// その際に表示させる会員リストの情報が必要
+		if (errors.hasErrors()) {
+			model.addAttribute("members", mapper.selectAll());
+			return "member";
+		}
+		
+		// 不備がなければ、パスワードをハッシュ化して、登録
+		String hashed = BCrypt.hashpw(member.getLoginPass(), BCrypt.gensalt());
+		member.setLoginPass(hashed);
+		mapper.insert(member);
+
+		return "redirect:/member";
+	}
+	
 	@GetMapping("/member/edit")
 	public String edit(Model model) {
 		model.addAttribute("member", new Member());
 		return "member";
 	}
 
-	@PostMapping("/member")
-	public String editPost(@Valid @ModelAttribute("member") Member member,
-			Errors errors) {
-		if (errors.hasErrors()) {
-
-			return "member";
-		}
-		mapper.insert(member);
-
-		return "redirect:/member";
-	}
+	
 
 	@PostMapping("/member/delete")
-	public String deleteMember(@RequestParam(required=false) Integer memberNo,
+	public String deleteMember(@RequestParam(required = false) Integer memberNo,
 			Model model, RedirectAttributes rd) {
-		
-		if(memberNo == null) {
-			rd.addAttribute("notDeleteMessage","NO.を入れてください");
+
+		if (memberNo == null) {
+			rd.addAttribute("notDeleteMessage", "NO.を入れてください");
 			return "redirect:/member";
 		}
-		
+
 		mapper.delete(memberNo);
 		rd.addFlashAttribute("deleteMessage", "削除しました");
 		return "redirect:/member";
 	}
 
-	
-	// パスワードをハッシュ化
-    public static String hashPassword(String plainTextPassword) {
-        return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
-    }
 
-    // パスワードを検証
-    public static boolean verifyPassword(String plainTextPassword, String hashedPassword) {
-        return BCrypt.checkpw(plainTextPassword, hashedPassword);
-    }
 }
